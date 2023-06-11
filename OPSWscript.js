@@ -18,4 +18,33 @@ function CreateMemo() {
 
   nameInput.value = "";
   memoInput.value = "";
+
+
+
+
+  var updateButton = document.createElement("button");
+  updateButton.textContent = "수정";
+  updateButton.addEventListener("click", function() {
+    UpdateMemo(memoElement);
+  });
+
+  var deleteButton = document.createElement("button");
+  deleteButton.textContent = "삭제";
+  deleteButton.addEventListener("click", function() {
+    DeleteMemo(memoElement);
+  });
+
+  memoElement.appendChild(updateButton);
+  memoElement.appendChild(deleteButton);
+}
+
+function UpdateMemo(memoElement) {
+  var updatedMemo = prompt("수정할 내용을 입력하세요:");
+  if (updatedMemo !== null && updatedMemo.trim() !== "") {
+    memoElement.firstChild.textContent = updatedMemo;
+  }
+}
+
+function DeleteMemo(memoElement) {
+  memoElement.remove();
 }
