@@ -19,9 +19,6 @@ function CreateMemo() {
   nameInput.value = "";
   memoInput.value = "";
 
-
-
-
   var updateButton = document.createElement("button");
   updateButton.textContent = "수정";
   updateButton.addEventListener("click", function() {
@@ -47,4 +44,23 @@ function UpdateMemo(memoElement) {
 
 function DeleteMemo(memoElement) {
   memoElement.remove();
+}
+
+function SearchMemo() {
+  var searchInput = document.getElementById("searchInput");
+  var searchTerm = searchInput.value.trim().toLowerCase();
+
+  var memos = document.getElementsByClassName("memo");
+
+  for (var i = 0; i < memos.length; i++) {
+    var memoText = memos[i].textContent.toLowerCase();
+
+    if (memoText.includes(searchTerm)) {
+      memos[i].style.display = "block";
+    } else {
+      memos[i].style.display = "none";
+    }
+  }
+
+  searchInput.value = "";
 }
